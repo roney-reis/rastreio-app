@@ -111,3 +111,11 @@ app.post('/api/track', async (req, res) => {
 });
 
 module.exports = app; // Exporta pra Vercel
+
+// Inicia o servidor apenas se estiver sendo executado diretamente (não exportado)
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+  });
+}
